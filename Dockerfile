@@ -21,8 +21,6 @@ COPY settings.js /data
 COPY package.json /usr/src/node-red/
 RUN npm install
 
-# COPY node-red-256.png /usr/src/node-red/node_modules/node-red/public/red/images
-# COPY node-red-256-1.png /usr/src/node-red/node_modules/node-red/public
 # User configuration directory volume
 EXPOSE 5880
 
