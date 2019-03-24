@@ -20,7 +20,7 @@
 
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
-    uiPort: process.env.PORT || 1880,
+    uiPort: process.env.PORT || 5880,
 
     // By default, the Node-RED UI accepts connections on all IPv4 interfaces.
     // To listen on all IPv6 addresses, set uiHost to "::",
@@ -69,7 +69,7 @@ module.exports = {
 
     // To enabled pretty-printing of the flow within the flow file, set the following
     //  property to true:
-    //flowFilePretty: true,
+    flowFilePretty: true,
 
     // By default, credentials are encrypted in storage using a generated key. To
     // specify your own secret, set the following property.
@@ -90,7 +90,7 @@ module.exports = {
     // By default, the Node-RED UI is available at http://localhost:1880/
     // The following property can be used to specify a different root path.
     // If set to false, this is disabled.
-    //httpAdminRoot: '/admin',
+    httpAdminRoot: '/admin',
 
     // Some nodes, such as HTTP In, can be used to listen for incoming http requests.
     // By default, these are served relative to '/'. The following property
@@ -119,15 +119,22 @@ module.exports = {
     // -----------------
     // To password protect the Node-RED editor and admin API, the following
     // property can be used. See http://nodered.org/docs/security.html for details.
-    adminAuth: {
-        type: "credentials",
-        users: [{
-            username: "admin",
-            password: "$2a$08$zZWtXTja0fB1pzD4sHCMyOCMYz2Z6dNbM6tl8sJogENOMcxWV9DN.",
-            permissions: "*"
-        }]
-     },
-
+    //adminAuth: {
+    //    type: "credentials",
+    //    users: [{
+    //        username: "admin",
+    //        password: process.env.EPASS || "$2a$08$zZWtXTja0fB1pzD4sHCMyOCMYz2Z6dNbM6tl8sJogENOMcxWV9DN.",
+    //        permissions: "*"
+    //    }]
+     //},
+    adminAuth: require('node-red-auth-github')({
+      clientID: '75209b67f3370ac367f9',
+      clientSecret: 'c366fee7fa620983f6c8204edfc65c15dd013de2',
+      baseURL: "http://localhost:5880/admin",
+        users: [
+          { username: "Minsino", permissions: ["*"] }
+         ]
+      }),
     // To password protect the node-defined HTTP endpoints (httpNodeRoot), or
     // the static content (httpStatic), the following properties can be used.
     // The pass field is a bcrypt hash of the password.
@@ -232,14 +239,14 @@ module.exports = {
     // provided here will enable file-based context that flushes to disk every 30 seconds.
     // Refer to the documentation for further options: https://nodered.org/docs/api/context/
     //
-    contextStorage: {
-      file: {
-        module: "localfilesystem"
-      },
-      memory: {
-        module: "memory"
-      }
+  contextStorage: {
+    file: {
+      module: "localfilesystem"
     },
+    memory: {
+      module: "memory"
+    }
+  },
 
     // The following property can be used to order the categories in the editor
     // palette. If a node's category is not in the list, the category will get

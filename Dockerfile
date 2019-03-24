@@ -17,13 +17,14 @@ RUN useradd --home-dir /usr/src/node-red --no-create-home node-red \
 USER node-red
 # COPY flows.json /data
 COPY settings.js /data
-
 # package.json contains Node-RED NPM module and node dependencies
 COPY package.json /usr/src/node-red/
 RUN npm install
 
+# COPY node-red-256.png /usr/src/node-red/node_modules/node-red/public/red/images
+# COPY node-red-256-1.png /usr/src/node-red/node_modules/node-red/public
 # User configuration directory volume
-EXPOSE 1880
+EXPOSE 5880
 
 # Environment variable holding file path for flows configuration
 ENV FLOWS=flows.json

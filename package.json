@@ -6,7 +6,7 @@
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/sinoptiic/node-red-docker.git"
+        "url": "https://github.com/Minsino/nrdocker.git"
     },
     "main": "node_modules/node-red/red/red.js",
     "scripts": {
@@ -24,8 +24,10 @@
         }
     ],
     "dependencies": {
-        "node-red": "0.20.0",
+        "node-red": "0.20.3",
         "node-red-dashboard": "2.14.0",
+        "node-red-auth-github": "github:node-red/node-red-auth-github",
+        "node-red-auth-twitter": "github:node-red/node-red-auth-twitter",
         "node-red-node-msgpack": "*",
         "node-red-node-base64": "*",
         "node-red-node-suncalc": "*",
@@ -33,6 +35,6 @@
         "node-red-contrib-mongodb3": "*"
     },
     "engines": {
-        "node": "4.*.*"
+        "node": "8.*.*"
     }
 }
