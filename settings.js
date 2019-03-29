@@ -128,11 +128,11 @@ module.exports = {
     //    }]
      //},
     adminAuth: require('node-red-auth-github')({
-      clientID: '75209b67f3370ac367f9',
-      clientSecret: 'c366fee7fa620983f6c8204edfc65c15dd013de2',
-      baseURL: "http://localhost:5880/admin",
+      clientID: 'bb27bf58cba94687b0a4',
+      clientSecret: '4f77bd8fb8a849564bc6ab0f9ff63a548b4186aa',
+      baseURL: "http://mqtt-broker:5880/admin",
         users: [
-          { username: "Minsino", permissions: ["*"] }
+          { username: "sinoptiic", permissions: ["*"] }
          ]
       }),
     // To password protect the node-defined HTTP endpoints (httpNodeRoot), or
