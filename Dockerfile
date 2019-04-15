@@ -1,6 +1,8 @@
 ARG NODE_VERSION=8
 FROM node:${NODE_VERSION}-alpine
 
+RUN apk add cgit git
+
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
 
