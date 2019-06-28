@@ -1,2 +1,2 @@
 # node-red-docker
-Node-RED 0.20.5 Docker Slim
+Node-RED 0.20.6 Docker Slim
